@@ -11,9 +11,10 @@ from matplotlib.figure import Figure
 from matplotlib.patches import Circle, Rectangle
 from matplotlib.collections import PatchCollection
 from matplotlib.lines import Line2D
+from PIL import Image
 
-from environments.car_controller.grid_drive.lib.road_grid import RoadGrid
-from environments.car_controller.grid_drive.lib.road_cultures import *
+from grid_drive.lib.road_grid import RoadGrid
+from grid_drive.lib.road_cultures import *
 
 import logging
 logger = logging.getLogger(__name__)
@@ -242,9 +243,14 @@ class GridDrive(gym.Env):
 		img = self.get_screen()
 		if mode == 'rgb_array':
 			return img
+		# elif mode == 'human':
+		# 	viewer = Image.fromarray(img)
+		# 	viewer.show()
+		# 	viewer.close()
+		# 	return True
 		elif mode == 'human':
-			from gym.envs.classic_control import rendering
 			if self.viewer is None:
+				from gym.envs.classic_control import rendering
 				self.viewer = rendering.SimpleImageViewer()
 			self.viewer.imshow(img)
 			return self.viewer.isopen

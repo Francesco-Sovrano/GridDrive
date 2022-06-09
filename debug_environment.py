@@ -1,5 +1,5 @@
 import time
-from environments import *
+from grid_drive import GridDrive
 
 env = GridDrive(culture_level="Easy", partial_observability=True)
 
