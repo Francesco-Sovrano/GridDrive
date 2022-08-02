@@ -65,7 +65,7 @@ The Gym constructor takes as input two parameters:
 
 **How to read the screenshot of GridDrive**: The purple circle is the car and its speed (in [0,120]) inside it. Grey cells are already explored cells.
 
-## Citations
+## Citation
 This code is free. So, if you use this code anywhere, please cite us:
 ```
 @article{sovrano2021explanation,
