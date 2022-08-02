@@ -7,7 +7,7 @@ GridDrive is a new [Gym](https://github.com/openai/gym) environment you can use 
 
 ## Usage
 
-The following snippet of code shows how to run an instance of GridDrive with a random policy.
+The following snippet of code (available also [here](debug_environment.py)) shows how to run an instance of GridDrive with a random policy.
 
 ```
 import time
