@@ -3,8 +3,41 @@
 This code has been used also in the paper
 > ["Explanation-Aware Experience Replay in Rule-Dense Environments"](https://arxiv.org/abs/2109.14711)
 
-GridDrive is a new Gym environment.
+GridDrive is a new [Gym](https://github.com/openai/gym) environment you can use for testing Reinforcement Learning algorithms on simple navigation tasks.
 
+## Usage
+
+The following snippet of code shows how to run an instance of GridDrive with a random policy.
+
+```
+import time
+from grid_drive import GridDrive
+
+env = GridDrive(culture_level="Easy", partial_observability=True)
+
+def run_one_episode (env):
+	env.seed(38)
+	env.reset()
+	sum_reward = 0
+	done = False
+	while not done:
+		action = env.action_space.sample()
+		state, reward, done, info = env.step(action)
+		sum_reward += reward
+		env.render()
+		time.sleep(0.25)
+	return sum_reward
+
+sum_reward = run_one_episode(env)
+```
+
+## Installation
+This project has been tested on Debian 9 and macOS Mojave 10.14 with Python 3.7.9 and 3.8.6. 
+The script [setup.sh](setup.sh) can be used to install GridDrive and and the environments in a python3 virtualenv.
+
+Before being able to run the [setup.sh](setup.sh) script you have to install: virtualenv, python3-dev, python3-pip and make. 
+
+## Description
 GridDrive is a 15×15 grid of cells, where every cell represents a different type of road (see Figure 2, left), with base types (e.g. motorway, school road, city) combined with other modifiers (roadworks, accidents, weather). 
 Each vehicle will have a set of properties that define which type of vehicle they are (emergency, civilian, worker, etc). 
 
@@ -32,12 +65,6 @@ The Gym constructor takes as input two parameters:
 ![Screenshot of GraphDrive](images/screenshot.png)
 
 **How to read the screenshot of GridDrive**: The purple circle is the car and its speed (in [0,120]) inside it. Grey cells are already explored cells.
-  
-## Installation
-This project has been tested on Debian 9 and macOS Mojave 10.14 with Python 3.7.9 and 3.8.6. 
-The script [setup.sh](setup.sh) can be used to install XARL and and the environments in a python3 virtualenv.
-
-Before being able to run the [setup.sh](setup.sh) script you have to install: virtualenv, python3-dev, python3-pip and make. 
 
 ## Citations
 This code is free. So, if you use this code anywhere, please cite us:
