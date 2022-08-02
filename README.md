@@ -1,9 +1,8 @@
 # GridDrive
 
+GridDrive is a new [Gym](https://github.com/openai/gym) environment you can use for testing Reinforcement Learning algorithms on simple navigation tasks.
 This code has been used also in the paper
 > ["Explanation-Aware Experience Replay in Rule-Dense Environments"](https://arxiv.org/abs/2109.14711)
-
-GridDrive is a new [Gym](https://github.com/openai/gym) environment you can use for testing Reinforcement Learning algorithms on simple navigation tasks.
 
 ## Usage
 
