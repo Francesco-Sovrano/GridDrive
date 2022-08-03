@@ -1,7 +1,7 @@
 import time
 from grid_drive import GridDrive
 
-env = GridDrive(culture_level="Easy", partial_observability=True)
+env = GridDrive(culture_level="Hard", partial_observability=False)
 
 def run_one_episode (env):
 	env.seed(38)

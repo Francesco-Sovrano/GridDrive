@@ -130,7 +130,7 @@ class RoadGrid:
 		# 	return False
 
 		dest_x, dest_y = self.agent_position
-		if   direction == NORTH:
+		if direction == NORTH:
 			dest_y += 1
 		elif direction == SOUTH:
 			dest_y -= 1
