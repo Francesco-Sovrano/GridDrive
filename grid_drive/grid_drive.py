@@ -147,7 +147,7 @@ class GridDrive(gym.Env):
 		canvas = FigureCanvas(figure)
 		ax = figure.add_subplot(111)  # nrows=1, ncols=1, index=1
 
-		cell_side = 20
+		cell_side = 20 # size of a cell
 
 		# Compute speed limits for all cells.
 		road_limits = {}
@@ -173,7 +173,7 @@ class GridDrive(gym.Env):
 				elif road_limits[road] == (None, None):  # Unfeasible road
 					cell_handle = Rectangle((left, bottom), cell_side, cell_side, color='red', alpha=0.25)
 				else: # new road with possible speed limits
-					cell_handle = Rectangle((left, bottom), cell_side, cell_side, fill=False)
+					cell_handle = Rectangle((left, bottom), cell_side, cell_side, color='green', fill=False)
 				shapes.append(cell_handle)
 
 				# Do not add label if agent is on top of cell.
@@ -182,8 +182,7 @@ class GridDrive(gym.Env):
 				# Add speed limit label
 				min_speed, max_speed = road_limits[road]
 				label = f'{min_speed}-{max_speed}' if min_speed is not None else 'N/A'
-				ax.text(0.5*(left + right), 0.5*(bottom + top), label,
-							horizontalalignment='center', verticalalignment='center', size=18)
+				ax.text(0.5*(left + right), 0.5*(bottom + top), label, horizontalalignment='center', verticalalignment='center', size=18)
 
 
 
@@ -196,11 +195,11 @@ class GridDrive(gym.Env):
 		agent_circle = Circle((left + (cell_side/2), bottom + (cell_side/2)), cell_side/2, color='b', alpha=0.5)
 		shapes.append(agent_circle)
 
-		patch_collection = PatchCollection(shapes, match_original=True)
+		patch_collection = PatchCollection(shapes, match_original=True) # If match_original==True, use the colors and linewidths of the original patches. If False, new colors may be assigned by providing the standard collection arguments, facecolor, edgecolor, linewidths, norm or cmap.
 		ax.add_collection(patch_collection)
 
 		# Adjust view around agent
-		zoom_factor = 3
+		zoom_factor = self.GRID_DIMENSION
 		left_view = agent_x - zoom_factor
 		right_view = agent_x + zoom_factor
 		bottom_view = agent_y - zoom_factor
